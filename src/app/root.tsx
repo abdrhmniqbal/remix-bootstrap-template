@@ -1,3 +1,4 @@
+import '@/app/global.css'
 import {
   Links,
   Meta,
@@ -5,7 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-import '@/app/global.css'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

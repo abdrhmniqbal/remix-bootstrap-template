@@ -12,7 +12,7 @@ export default defineConfig({
     remixDevTools(),
     remix({
       appDirectory: './src/app',
-      routes: async (defineRoutes) => {
+      routes: async defineRoutes => {
         return flatRoutes('routes', defineRoutes, { appDir: './src/app' })
       },
     }),
