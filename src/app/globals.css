@@ -76,6 +76,6 @@
   ::-moz-selection,
   ::-webkit-selection,
   ::selection {
-    @apply bg-primary text-foreground;
+    @apply bg-primary text-primary-foreground;
   }
 }
