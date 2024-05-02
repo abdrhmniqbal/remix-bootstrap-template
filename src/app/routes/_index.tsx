@@ -1,9 +1,13 @@
 import type { MetaFunction } from '@remix-run/node'
+import { getEnvValue } from '@/lib/utils'
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'New Remix App' },
-    { name: 'description', content: 'Welcome to Remix!' },
+    { title: getEnvValue('VITE_APP_NAME') },
+    {
+      name: 'description',
+      content: `Welcome to ${getEnvValue('VITE_APP_NAME')}!`,
+    },
   ]
 }
 
