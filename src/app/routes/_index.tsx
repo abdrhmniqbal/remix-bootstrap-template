@@ -9,8 +9,8 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="flex h-screen items-center justify-center bg-slate-200">
-      <h1 className="text-3xl font-bold">Flat Routes works!</h1>
+    <div className="bg-foreground flex h-screen items-center justify-center bg-slate-200">
+      <h1 className="text-background text-3xl font-bold">shadcn works!</h1>
     </div>
   )
 }
