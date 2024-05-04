@@ -9,6 +9,7 @@ import {
   useRouteError,
 } from '@remix-run/react'
 import ErrorBoundaryBlock from '@/components/blocks/error-boundary'
+import { getEnvValue } from '@/lib/utils'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -40,22 +41,20 @@ export function ErrorBoundary() {
 
   if (isRouteErrorResponse(error)) {
     return (
-      <ErrorBoundaryBlock
-        data={error.data}
-        status={error.status}
-        statusText={error.statusText}
-      />
+      <html lang="en">
+        <head>
+          <title>
+            Oops! {error.statusText} - {getEnvValue('VITE_APP_NAME')}
+          </title>
+        </head>
+        <body>
+          <ErrorBoundaryBlock
+            data={error.data}
+            status={error.status}
+            statusText={error.statusText}
+          />
+        </body>
+      </html>
     )
-  } else if (error instanceof Error) {
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>{error.message}</p>
-        <p>The stack trace is:</p>
-        <pre>{error.stack}</pre>
-      </div>
-    )
-  } else {
-    return <h1>Unknown Error</h1>
   }
 }
