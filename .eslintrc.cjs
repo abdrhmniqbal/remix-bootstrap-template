@@ -49,6 +49,9 @@ module.exports = {
           typescript: {},
         },
       },
+      rules: {
+        'jsx-a11y/heading-has-content': 'off',
+      },
     },
 
     // Typescript
@@ -72,6 +75,13 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:import/typescript',
       ],
+    },
+    {
+      files: ['**/components/ui/*.tsx'],
+      rules: {
+        'react/prop-types': [2, { ignore: ['className'] }],
+        'react-refresh/only-export-components': 'off',
+      },
     },
 
     // Node
