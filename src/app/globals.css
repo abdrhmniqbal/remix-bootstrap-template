@@ -79,3 +79,9 @@
     @apply bg-primary text-primary-foreground;
   }
 }
+
+@layer components {
+  .link {
+    @apply text-primary underline-offset-4 hover:underline;
+  }
+}

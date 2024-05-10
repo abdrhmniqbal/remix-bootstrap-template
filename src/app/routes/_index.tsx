@@ -1,4 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
+import { Button } from '@/components/ui/button'
+import Header from '@/components/blocks/header'
 import { getEnvValue } from '@/lib/utils'
 
 export const meta: MetaFunction = () => {
@@ -13,8 +15,27 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="flex h-screen items-center justify-center bg-foreground">
-      <h1 className="text-3xl font-bold text-background">shadcn works!</h1>
+    <div className="flex justify-center">
+      <Header
+        navLinks={[
+          {
+            title: 'Pricing',
+            to: '#about',
+          },
+          {
+            title: 'Features',
+            to: '#features',
+          },
+          {
+            title: 'FAQ',
+            to: '#faq',
+          },
+        ]}
+        actionButton={{
+          title: 'Get Started',
+          to: '/register',
+        }}
+      />
     </div>
   )
 }

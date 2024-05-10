@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
+// import 'remix-image/remix-image.css'
 import { ErrorBoundaryBlock } from '@/components/blocks/error-boundary'
 
 const isClient = typeof document !== 'undefined'
