@@ -1,11 +1,4 @@
-import {
-  Link,
-  Meta,
-  Scripts,
-  isRouteErrorResponse,
-  useRouteError,
-} from '@remix-run/react'
-import { createElement } from 'react'
+import { Link, isRouteErrorResponse, useRouteError } from '@remix-run/react'
 import { Button } from '@/components/ui/button'
 import { ErrorStack } from '@/components/blocks/error-stack'
 import { getEnvValue } from '@/lib/utils'
@@ -45,22 +38,11 @@ function ErrorBoundaryLayout({
   )
 }
 
-export function ErrorBoundaryBlock({ isClient }: { isClient: boolean }) {
+export function ErrorBoundaryBlock() {
   const error = useRouteError()
-  const appName = getEnvValue('VITE_APP_NAME')
-
-  if (isClient) {
-    return createElement('html', {
-      suppressHydrationWarning: true,
-      dangerouslySetInnerHTML: {
-        __html: document.getElementsByTagName('html')[0].innerHTML,
-      },
-    })
-  }
 
   if (isRouteErrorResponse(error)) {
     const { status, statusText } = error
-    const pageTitle = `Oops! ${statusText} - ${appName}`
     const messages: { [key: number]: string } = {
       400: 'Something went wrong with your request. Please check your input and try again.',
       401: 'You need to log in or provide valid credentials to access this resource.',
@@ -83,52 +65,32 @@ export function ErrorBoundaryBlock({ isClient }: { isClient: boolean }) {
     const actionButton = actionButtons[status]
 
     return (
-      <html lang="en">
-        <head>
-          <title>{pageTitle}</title>
-          <Meta />
-        </head>
-        <body>
-          <ErrorBoundaryLayout
-            status={status}
-            statusText={statusText}
-            message={message}
-            actionButton={actionButton}
-          />
-          <Scripts />
-        </body>
-      </html>
+      <ErrorBoundaryLayout
+        status={status}
+        statusText={statusText}
+        message={message}
+        actionButton={actionButton}
+      />
     )
   }
 
   const { message, stack } = error as Error
 
-  return (
-    <html lang="en">
-      <head>
-        <title>Something went wrong - {appName}</title>
-        <Meta />
-      </head>
-      <body>
-        {getEnvValue('PROD') ? (
-          <ErrorBoundaryLayout
-            statusText={message || 'App Error'}
-            message="An error has occurred processing your request. You may try
+  return getEnvValue('PROD') ? (
+    <ErrorBoundaryLayout
+      statusText={message || 'App Error'}
+      message="An error has occurred processing your request. You may try
           again or contact support if the problem persists."
-            actionButton={
-              <Button asChild>
-                <Link to="/">Take me back</Link>
-              </Button>
-            }
-          />
-        ) : (
-          <ErrorStack
-            message={message}
-            stack={stack}
-          />
-        )}
-        <Scripts />
-      </body>
-    </html>
+      actionButton={
+        <Button asChild>
+          <Link to="/">Take me back</Link>
+        </Button>
+      }
+    />
+  ) : (
+    <ErrorStack
+      message={message}
+      stack={stack}
+    />
   )
 }

@@ -1,4 +1,5 @@
 import '@/app/globals.css'
+import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/node'
 import {
   Links,
   Meta,
@@ -6,10 +7,25 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-// import 'remix-image/remix-image.css'
 import { ErrorBoundaryBlock } from '@/components/blocks/error-boundary'
+import { getEnvValue, getSiteUrl } from '@/lib/utils'
 
-const isClient = typeof document !== 'undefined'
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  const appName = getEnvValue('VITE_APP_NAME')
+  return [
+    { title: data ? appName : `Error | ${appName}` },
+    { name: 'description', content: `Your own captain's log` },
+  ]
+}
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  return json({
+    requestInfo: {
+      origin: getSiteUrl(request),
+      path: new URL(request.url).pathname,
+    },
+  })
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -37,9 +53,9 @@ export default function App() {
 }
 
 export function ErrorBoundary() {
-  return <ErrorBoundaryBlock isClient={isClient} />
-}
-
-export function HydrateFallback() {
-  return <h1>Loading</h1>
+  return (
+    <Layout>
+      <ErrorBoundaryBlock />
+    </Layout>
+  )
 }
