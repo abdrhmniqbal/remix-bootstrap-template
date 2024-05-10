@@ -12,7 +12,10 @@ import {
 } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 
-type NavLink = { title: string; to: string }
+type NavLink = {
+  title: string
+  to: string
+}
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   navLinks: NavLink[]
@@ -41,14 +44,17 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
           {navLinks.map(({ title, to }, index) => (
             <Link
               to={to}
-              className="link"
               key={index}
+              className="link"
             >
               {title}
             </Link>
           ))}
         </nav>
-        <SheetTrigger className="md:hidden">
+        <SheetTrigger
+          className="md:hidden"
+          asChild
+        >
           <Button
             variant="outline"
             size="icon"
@@ -72,8 +78,8 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
                 {navLinks.map(({ title, to }, index) => (
                   <Link
                     to={to}
-                    className="link"
                     key={index}
+                    className="link"
                   >
                     {title}
                   </Link>
