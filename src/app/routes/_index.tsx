@@ -1,7 +1,7 @@
 import type { MetaFunction } from '@remix-run/node'
-import { Button } from '@/components/ui/button'
 import Header from '@/components/blocks/header'
 import { getEnvValue } from '@/lib/utils'
+import Hero from '@/components/blocks/hero'
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,6 +15,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
+    <>
     <div className="flex justify-center">
       <Header
         navLinks={[
@@ -37,5 +38,7 @@ export default function Index() {
         }}
       />
     </div>
+      <Hero />
+    </>
   )
 }
