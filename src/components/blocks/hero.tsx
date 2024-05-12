@@ -1,3 +1,4 @@
+import { GithubIcon } from '@/assets/icons'
 import { Button } from '@/components/ui/button'
 
 function Hero() {
@@ -23,11 +24,7 @@ function Hero() {
             className="w-full sm:w-auto"
             variant="outline"
           >
-            <img
-              className="mr-2 size-4"
-              src="/images/github.svg"
-              alt="Github"
-            />
+            <GithubIcon className="mr-2 size-4 text-[#24292f]" />
             View on Github
           </Button>
         </div>
