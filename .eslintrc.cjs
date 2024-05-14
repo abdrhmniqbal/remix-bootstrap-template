@@ -60,7 +60,7 @@ module.exports = {
       plugins: ['@typescript-eslint', 'import'],
       parser: '@typescript-eslint/parser',
       settings: {
-        'import/internal-regex': '^~/',
+        'import/internal-regex': '^@/',
         'import/resolver': {
           node: {
             extensions: ['.ts', '.tsx'],
@@ -77,7 +77,7 @@ module.exports = {
       ],
     },
     {
-      files: ['**/components/ui/*.tsx'],
+      files: ['**/components/**/*.tsx', '**/assets/**/*.tsx'],
       rules: {
         'react/prop-types': [2, { ignore: ['className'] }],
         'react-refresh/only-export-components': 'off',
