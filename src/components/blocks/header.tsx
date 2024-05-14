@@ -19,7 +19,7 @@ type NavLink = {
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   navLinks: NavLink[]
-  actionButton?: NavLink
+  actionButton?: JSX.Element
 }
 
 const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
@@ -85,25 +85,23 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
                   </Link>
                 ))}
               </nav>
-              {actionButton && (
-                <Button
-                  className="w-full md:hidden"
-                  asChild
-                >
-                  <Link to={actionButton.to}>{actionButton.title}</Link>
-                </Button>
-              )}
+              {actionButton &&
+                React.cloneElement(actionButton, {
+                  className: cn(
+                    actionButton.props.className,
+                    'w-full md:hidden',
+                  ),
+                })}
             </SheetDescription>
           </SheetHeader>
         </SheetContent>
-        {actionButton && (
-          <Button
-            className="hidden md:inline-flex"
-            asChild
-          >
-            <Link to={actionButton.to}>{actionButton.title}</Link>
-          </Button>
-        )}
+        {actionButton &&
+          React.cloneElement(actionButton, {
+            className: cn(
+              actionButton.props.className,
+              'hidden md:inline-flex',
+            ),
+          })}
       </header>
     </Sheet>
   ),
