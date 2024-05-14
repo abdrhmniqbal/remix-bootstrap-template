@@ -51,7 +51,7 @@ export default function Index() {
             to="https://github.com/iblabd/remix-boilerplate-template"
             target="_blank"
           >
-            <GithubIcon className="mr-2 size-4 text-[#24292f]" />
+            <GithubIcon className="btn-icon-l text-[#24292f]" />
             View on Github
           </LinkButton>
         }
