@@ -1,6 +1,6 @@
 import React from 'react'
 
-type IconProps = React.HTMLAttributes<SVGElement>
+type IconProps = React.SVGProps<SVGSVGElement>
 
 export default function StripeIcon(props: IconProps) {
   return (

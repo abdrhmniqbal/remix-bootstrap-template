@@ -1,12 +1,14 @@
 import React from 'react'
+import { cn } from '@/lib/utils'
 
-type IconProps = React.HTMLAttributes<SVGElement>
+type IconProps = React.SVGProps<SVGSVGElement>
 
-export default function GithubIcon(props: IconProps) {
+export default function GithubIcon({ className, ...props }: IconProps) {
   return (
     <svg
       role="img"
       viewBox="0 0 96 98"
+      className={cn('text-[#24292f]', className)}
       {...props}
     >
       <path
