@@ -1,5 +1,6 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   "eslint.probe": ["typescript", "typescriptreact"],
   "editor.formatOnSave": true,
   "eslint.validate": ["typescript", "typescriptreact"],
@@ -12,5 +13,8 @@
   },
   "problems.showCurrentInStatus": false,
   "remix-forge.componentFolder": "/app/components/ui",
-  "i18n-ally.localesPaths": ["public/locales", "app/lib/i18n"]
+  "i18n-ally.localesPaths": ["public/locales", "app/lib/i18n"],
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }

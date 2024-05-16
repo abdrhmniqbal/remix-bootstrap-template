@@ -1,20 +1,38 @@
 import '@/app/globals.css'
+import { LoaderFunctionArgs, MetaFunction, json } from '@remix-run/node'
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  isRouteErrorResponse,
-  useRouteError,
 } from '@remix-run/react'
-import { createElement } from 'react'
-import ErrorBoundaryBlock from '@/components/blocks/error-boundary'
-import { getEnvValue } from '@/lib/utils'
+import { ErrorBoundaryBlock } from '@/components/blocks/error-boundary'
+import { getEnvValue, getSiteUrl } from '@/lib/utils'
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  const appName = getEnvValue('VITE_APP_NAME')
+  return [
+    { title: data ? appName : `Error | ${appName}` },
+    { name: 'description', content: `Your own captain's log` },
+  ]
+}
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  return json({
+    requestInfo: {
+      origin: getSiteUrl(request),
+      path: new URL(request.url).pathname,
+    },
+  })
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="scroll-smooth"
+    >
       <head>
         <meta charSet="utf-8" />
         <meta
@@ -37,42 +55,10 @@ export default function App() {
   return <Outlet />
 }
 
-const isClient = typeof document !== 'undefined'
-
 export function ErrorBoundary() {
-  const error = useRouteError()
-
-  if (isClient) {
-    return createElement('html', {
-      suppressHydrationWarning: true,
-      dangerouslySetInnerHTML: {
-        __html: document.getElementsByTagName('html')[0].innerHTML,
-      },
-    })
-  }
-
-  if (isRouteErrorResponse(error)) {
-    const pageTitle = `Oops! ${error.statusText} - ${getEnvValue('VITE_APP_NAME')}`
-    return (
-      <html lang="en">
-        <head>
-          <title>{pageTitle}</title>
-          <Meta />
-          <Links />
-        </head>
-        <body>
-          <ErrorBoundaryBlock
-            data={error.data}
-            status={error.status}
-            statusText={error.statusText}
-          />
-          <Scripts />
-        </body>
-      </html>
-    )
-  }
-}
-
-export function HydrateFallback() {
-  return <h1>Loading</h1>
+  return (
+    <Layout>
+      <ErrorBoundaryBlock />
+    </Layout>
+  )
 }

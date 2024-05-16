@@ -49,6 +49,9 @@ module.exports = {
           typescript: {},
         },
       },
+      rules: {
+        'jsx-a11y/heading-has-content': 'off',
+      },
     },
 
     // Typescript
@@ -57,7 +60,7 @@ module.exports = {
       plugins: ['@typescript-eslint', 'import'],
       parser: '@typescript-eslint/parser',
       settings: {
-        'import/internal-regex': '^~/',
+        'import/internal-regex': '^@/',
         'import/resolver': {
           node: {
             extensions: ['.ts', '.tsx'],
@@ -72,6 +75,13 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:import/typescript',
       ],
+    },
+    {
+      files: ['**/components/**/*.tsx', '**/assets/**/*.tsx'],
+      rules: {
+        'react/prop-types': [2, { ignore: ['className'] }],
+        'react-refresh/only-export-components': 'off',
+      },
     },
 
     // Node
