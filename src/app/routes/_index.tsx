@@ -11,6 +11,7 @@ import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
 import LinkButton from '@/components/blocks/link-button'
 import LogoList from '@/components/blocks/logo-list'
+import Problem from '@/components/blocks/problem'
 import { getEnvValue } from '@/lib/utils'
 
 export const meta: MetaFunction = () => {
@@ -24,6 +25,7 @@ export const meta: MetaFunction = () => {
 }
 
 export default function Index() {
+  const appName = getEnvValue('VITE_APP_NAME')
   return (
     <>
       <Header
@@ -48,11 +50,7 @@ export default function Index() {
         description="The boilerplate with all you need to build your production ready
           website, and start making money online fast."
         featuredImage="https://images.unsplash.com/photo-1556155092-490a1ba16284?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixid=MnwxfDB8MXxyYW5kb218MHx8d2FsbHBhcGVyLGxhbmRzY2FwZXx8fHx8fDE3MTUzMjMxMTA&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1920"
-        actionButton={
-          <LinkButton to="/login">
-            Get {getEnvValue('VITE_APP_NAME')}
-          </LinkButton>
-        }
+        actionButton={<LinkButton to="/login">Get {appName}</LinkButton>}
         secondButton={
           <LinkButton
             to="https://github.com/iblabd/remix-boilerplate-template"
@@ -90,6 +88,24 @@ export default function Index() {
             to: 'https://ui.shadcn.com',
             target: '_blank',
             logo: <ShadcnIcon />,
+          },
+        ]}
+      />
+      <Problem
+        title={`80% of startups never launched`}
+        description="Auth, payment, design... there is too much to do."
+        problems={[
+          {
+            icon: '💻',
+            title: 'Start creating a project',
+          },
+          {
+            icon: '⏱️',
+            title: 'Not have time enough',
+          },
+          {
+            icon: '🚪',
+            title: 'Leave the project',
           },
         ]}
       />
