@@ -15,6 +15,7 @@ interface ProblemProps extends React.HTMLAttributes<HTMLDivElement> {
 const Problem = React.forwardRef<HTMLDivElement, ProblemProps>(
   ({ title, description, problems, className, ...props }, ref) => (
     <section
+      id="problem"
       className={cn('min-h-screen bg-accent text-accent-foreground', className)}
       ref={ref}
       {...props}

@@ -26,6 +26,7 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
   ({ className, navLinks, actionButton, ...props }, ref) => (
     <Sheet>
       <header
+        id="header"
         ref={ref}
         className={cn(
           'mx-auto flex w-full max-w-7xl items-center justify-between px-8 py-4',
