@@ -21,6 +21,7 @@ export default function LinkButton({
       <Link
         to={to}
         target={target}
+        rel={target === '_blank' ? 'noreferrer' : undefined}
       >
         {children}
       </Link>
