@@ -13,9 +13,12 @@ interface LogoListProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const LogoList = React.forwardRef<HTMLDivElement, LogoListProps>(
-  ({ title, lists, ...props }, ref) => (
+  ({ title, lists, className, ...props }, ref) => (
     <section
-      className="flex w-full flex-col items-center justify-center gap-2 px-8 py-16 lg:py-20"
+      className={cn(
+        'flex w-full flex-col items-center justify-center gap-2 px-8 py-16 lg:py-20',
+        className,
+      )}
       ref={ref}
       {...props}
     >

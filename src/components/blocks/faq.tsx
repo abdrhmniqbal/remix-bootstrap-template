@@ -19,7 +19,6 @@ interface FAQProps extends React.HTMLAttributes<HTMLDivElement> {
 const FAQ = React.forwardRef<HTMLDivElement, FAQProps>(
   ({ title, description, questions, ...props }, ref) => (
     <section
-      className="bg-accent text-accent-foreground"
       ref={ref}
       {...props}
     >

@@ -10,11 +10,22 @@ interface HeroProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
   (
-    { title, description, actionButton, secondButton, featuredImage, ...props },
+    {
+      title,
+      description,
+      actionButton,
+      secondButton,
+      featuredImage,
+      className,
+      ...props
+    },
     ref,
   ) => (
     <section
-      className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-16 px-8 py-8 lg:flex-row lg:items-start lg:gap-20 lg:py-20"
+      className={cn(
+        'mx-auto flex max-w-7xl flex-col items-center justify-center gap-16 px-8 py-8 lg:flex-row lg:items-start lg:gap-20 lg:py-20',
+        className,
+      )}
       ref={ref}
       {...props}
     >
