@@ -1,4 +1,11 @@
-import { GithubIcon } from '@/assets/icons'
+import {
+  GithubIcon,
+  PrismaIcon,
+  RemixIcon,
+  ShadcnIcon,
+  StripeIcon,
+  ViteIcon,
+} from '@/assets/icons'
 import type { MetaFunction } from '@remix-run/node'
 import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
@@ -56,7 +63,36 @@ export default function Index() {
           </LinkButton>
         }
       />
-      <LogoList />
+      <LogoList
+        title="Built for Developers"
+        lists={[
+          {
+            to: 'https://remix.run',
+            target: '_blank',
+            logo: <RemixIcon />,
+          },
+          {
+            to: 'https://vitejs.dev',
+            target: '_blank',
+            logo: <ViteIcon />,
+          },
+          {
+            to: 'https://stripe.com',
+            target: '_blank',
+            logo: <StripeIcon />,
+          },
+          {
+            to: 'https://www.prisma.io',
+            target: '_blank',
+            logo: <PrismaIcon />,
+          },
+          {
+            to: 'https://ui.shadcn.com',
+            target: '_blank',
+            logo: <ShadcnIcon />,
+          },
+        ]}
+      />
     </>
   )
 }
