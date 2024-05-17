@@ -27,13 +27,10 @@ const Problem = React.forwardRef<HTMLDivElement, ProblemProps>(
         <p className="mx-auto mb-12 max-w-xl text-lg leading-relaxed text-muted-foreground md:mb-20">
           {description}
         </p>
-        <div className="flex h-full flex-col items-center justify-center gap-6 md:flex-row md:items-start">
-          {problems.map(({ icon, title }, index) => (
-            <>
-              <div
-                className="flex h-full w-full flex-col items-center justify-center gap-2 md:w-48"
-                key={index}
-              >
+        <div className="flex h-full flex-col items-center justify-center gap-6 md:flex-row ">
+          {problems.map(({ icon, title }, idx) => (
+            <React.Fragment key={idx}>
+              <div className="flex h-full w-full flex-col items-center justify-center gap-2 md:w-48">
                 <span className="text-4xl">
                   {typeof icon === 'string'
                     ? icon
@@ -43,12 +40,12 @@ const Problem = React.forwardRef<HTMLDivElement, ProblemProps>(
                 </span>
                 <p className="font-bold">{title}</p>
               </div>
-              {index < problems.length - 1 && (
+              {idx < problems.length - 1 && (
                 <div className="flex h-full w-full items-center justify-center md:w-auto">
                   <MoveRightIcon className="h-6 w-6 rotate-90 md:rotate-0" />
                 </div>
               )}
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>

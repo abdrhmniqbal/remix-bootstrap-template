@@ -7,11 +7,19 @@ import {
   ViteIcon,
 } from '@/assets/icons'
 import type { MetaFunction } from '@remix-run/node'
+import {
+  CreditCardIcon,
+  DatabaseIcon,
+  HomeIcon,
+  SquareChevronRightIcon,
+} from 'lucide-react'
 import FAQ from '@/components/blocks/faq'
+import Features from '@/components/blocks/features'
 import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
 import LinkButton from '@/components/blocks/link-button'
 import LogoList from '@/components/blocks/logo-list'
+import Pricing from '@/components/blocks/pricing'
 import Problem from '@/components/blocks/problem'
 import { getEnvValue } from '@/lib/utils'
 
@@ -33,7 +41,7 @@ export default function Index() {
         navLinks={[
           {
             title: 'Pricing',
-            to: '#about',
+            to: '#pricing',
           },
           {
             title: 'Features',
@@ -46,6 +54,7 @@ export default function Index() {
         ]}
         actionButton={<LinkButton to="/register">Get Started</LinkButton>}
       />
+
       <Hero
         title="Launch your website in days."
         description="The boilerplate with all you need to build your production ready
@@ -62,6 +71,7 @@ export default function Index() {
           </LinkButton>
         }
       />
+
       <LogoList
         title="Built for Developers"
         lists={[
@@ -92,6 +102,7 @@ export default function Index() {
           },
         ]}
       />
+
       <Problem
         title={`80% of startups never launched`}
         description="Auth, payment, design... there is too much to do."
@@ -110,6 +121,61 @@ export default function Index() {
           },
         ]}
       />
+
+      <Features
+        title="Fast your developments"
+        description="Use our boilerplate to make development more fast, fast, and faster."
+        features={[
+          {
+            icon: <SquareChevronRightIcon />,
+            title: 'CLI Tools',
+            description:
+              'Easy to use boilerplate just run command and the boilerplate ready to use. No need to copy. No need to paste.',
+          },
+          {
+            icon: <DatabaseIcon />,
+            title: 'Database',
+            description:
+              "Easy to integrate with any database, didn't care that is SQL or noSQL.",
+          },
+          {
+            icon: <CreditCardIcon />,
+            title: 'Payment',
+            description:
+              'This stacks has built-in payment integration with Stripe in base template.',
+          },
+          {
+            icon: <HomeIcon />,
+            title: 'Host anywhere',
+            description:
+              'This stacks can be hosted anywhere. Check docs for advanced configuration.',
+          },
+        ]}
+      />
+
+      <Pricing
+        description="Choose the plan that fits your needs. All plans come with a 30-day
+          money-back guarantee."
+        tiers={[
+          {
+            cta: 'Subscribe now',
+            description: 'For hobbyists and beginners who want to learn.',
+            features: ['Unlimited public projects', 'Community support'],
+            name: 'Starter',
+            price: 'Free',
+          },
+          {
+            cta: 'Subscribe now',
+            description: 'For professionals and businesses who want to grow.',
+            features: ['Access to boilerplate CLI', 'Priority support'],
+            highlighted: true,
+            name: 'Pro',
+            price: '$49.99',
+            priceSuffix: 'per year',
+          },
+        ]}
+      />
+
       <FAQ
         questions={[
           {
