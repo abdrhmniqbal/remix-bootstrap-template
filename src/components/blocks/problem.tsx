@@ -29,10 +29,9 @@ const Problem = React.forwardRef<HTMLDivElement, ProblemProps>(
         </p>
         <div className="flex h-full flex-col items-center justify-center gap-6 md:flex-row md:items-start">
           {problems.map(({ icon, title }, index) => (
-            <>
+            <div key={index}>
               <div
                 className="flex h-full w-full flex-col items-center justify-center gap-2 md:w-48"
-                key={index}
               >
                 <span className="text-4xl">
                   {typeof icon === 'string'
@@ -48,7 +47,7 @@ const Problem = React.forwardRef<HTMLDivElement, ProblemProps>(
                   <MoveRightIcon className="h-6 w-6 rotate-90 md:rotate-0" />
                 </div>
               )}
-            </>
+            </div>
           ))}
         </div>
       </div>
