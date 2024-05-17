@@ -7,7 +7,14 @@ import {
   ViteIcon,
 } from '@/assets/icons'
 import type { MetaFunction } from '@remix-run/node'
+import {
+  CreditCardIcon,
+  DatabaseIcon,
+  HomeIcon,
+  SquareChevronRightIcon,
+} from 'lucide-react'
 import FAQ from '@/components/blocks/faq'
+import Features from '@/components/blocks/features'
 import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
 import LinkButton from '@/components/blocks/link-button'
@@ -111,6 +118,37 @@ export default function Index() {
           {
             icon: '🚪',
             title: 'Leave the project',
+          },
+        ]}
+      />
+
+      <Features
+        title="Fast your developments"
+        description="Use our boilerplate to make development more fast, fast, and faster."
+        features={[
+          {
+            icon: <SquareChevronRightIcon />,
+            title: 'CLI Tools',
+            description:
+              'Easy to use boilerplate just run command and the boilerplate ready to use. No need to copy. No need to paste.',
+          },
+          {
+            icon: <DatabaseIcon />,
+            title: 'Database',
+            description:
+              "Easy to integrate with any database, didn't care that is SQL or noSQL.",
+          },
+          {
+            icon: <CreditCardIcon />,
+            title: 'Payment',
+            description:
+              'This stacks has built-in payment integration with Stripe in base template.',
+          },
+          {
+            icon: <HomeIcon />,
+            title: 'Host anywhere',
+            description:
+              'This stacks can be hosted anywhere. Check docs for advanced configuration.',
           },
         ]}
       />
