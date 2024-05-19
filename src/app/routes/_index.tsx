@@ -21,6 +21,7 @@ import LinkButton from '@/components/blocks/link-button'
 import LogoList from '@/components/blocks/logo-list'
 import Pricing from '@/components/blocks/pricing'
 import Problem from '@/components/blocks/problem'
+import Testimonial from '@/components/blocks/testimonial'
 import { getEnvValue } from '@/lib/utils'
 
 export const meta: MetaFunction = () => {
@@ -151,6 +152,13 @@ export default function Index() {
               'This stacks can be hosted anywhere. Check docs for advanced configuration.',
           },
         ]}
+      />
+
+      <Testimonial
+        message="I don't believe just launched project in one day. This so fast and easy."
+        name="Iqbal Abdurrahman"
+        userRole="Software Engineer"
+        src="https://github.com/iblabd.png"
       />
 
       <Pricing
