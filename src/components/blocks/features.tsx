@@ -24,7 +24,7 @@ const Features = React.forwardRef<HTMLDivElement, FeaturesProps>(
   ({ title, description, features, className, ...props }, ref) => (
     <section
       id="features"
-      className={cn('mx-auto max-w-7xl px-8 py-16 md:py-24', className)}
+      className={cn('mx-auto max-w-7xl px-8 py-16', className)}
       ref={ref}
       {...props}
     >
@@ -53,7 +53,9 @@ const Features = React.forwardRef<HTMLDivElement, FeaturesProps>(
               </CardHeader>
               <CardContent>
                 <CardTitle>{title}</CardTitle>
-                <CardDescription>{description}</CardDescription>
+                <CardDescription className="mt-2">
+                  {description}
+                </CardDescription>
               </CardContent>
             </Card>
           ))}
