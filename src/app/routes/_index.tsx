@@ -17,7 +17,6 @@ import Features from '@/components/blocks/features'
 import Footer from '@/components/blocks/footer'
 import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
-import LinkButton from '@/components/blocks/link-button'
 import LogoList from '@/components/blocks/logo-list'
 import Pricing from '@/components/blocks/pricing'
 import Problem from '@/components/blocks/problem'
@@ -37,24 +36,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <Header
-        navLinks={[
-          {
-            title: 'Pricing',
-            to: '#pricing',
-          },
-          {
-            title: 'Features',
-            to: '#features',
-          },
-          {
-            title: 'FAQ',
-            to: '#faq',
-          },
-        ]}
-        actionButton={<LinkButton to="/register">Get Started</LinkButton>}
-      />
-
+      <Header />
       <Hero />
 
       <LogoList
