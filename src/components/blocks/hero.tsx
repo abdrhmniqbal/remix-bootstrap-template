@@ -1,69 +1,35 @@
-import React from 'react'
-import { cn } from '@/lib/utils'
+import { GithubIcon } from '@/assets/icons'
+import HeroContent, {
+  HeroActionButton,
+  HeroButtonGroup,
+  HeroDescription,
+  HeroImage,
+  HeroSecondButton,
+  HeroTitle,
+  HeroWrapper,
+} from '@/components/ui/hero'
 
-interface HeroProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string
-  description: string
-  featuredImage: string
-  actionButton: JSX.Element
-  secondButton?: JSX.Element
+export default function Hero() {
+  return (
+    <HeroWrapper>
+      <HeroContent>
+        <HeroTitle>Launch your website in days.</HeroTitle>
+        <HeroDescription>
+          The boilerplate with all you need to build your production ready
+          website, and start making money online fast.
+        </HeroDescription>
+        <HeroButtonGroup>
+          <HeroActionButton to="/login">Get Now</HeroActionButton>
+          <HeroSecondButton
+            to="https://github.com/iblabd/remix-boilerplate-template"
+            target="_blank"
+          >
+            <GithubIcon className="btn-icon-l text-[#24292f]" />
+            View on Github
+          </HeroSecondButton>
+        </HeroButtonGroup>
+      </HeroContent>
+      <HeroImage src="https://images.unsplash.com/photo-1556155092-490a1ba16284?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&w=1920" />
+    </HeroWrapper>
+  )
 }
-const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
-  (
-    {
-      title,
-      description,
-      actionButton,
-      secondButton,
-      featuredImage,
-      className,
-      ...props
-    },
-    ref,
-  ) => (
-    <section
-      id="hero"
-      className={cn(
-        'mx-auto flex max-w-7xl flex-col items-center justify-center gap-16 px-8 py-8 lg:flex-row lg:items-start lg:gap-20 lg:py-20',
-        className,
-      )}
-      ref={ref}
-      {...props}
-    >
-      <div className="flex flex-col items-center justify-center gap-8 text-center lg:items-start lg:gap-10 lg:text-left">
-        <h1 className="flex flex-col items-center gap-3 text-4xl font-extrabold tracking-tighter lg:items-start lg:text-6xl/tight">
-          {title}
-        </h1>
-        <p className="text-lg leading-relaxed opacity-80">{description}</p>
-        <div className="flex w-full flex-col gap-4 sm:flex-row">
-          {actionButton &&
-            React.cloneElement(actionButton, {
-              size: actionButton.props.size ? actionButton.props.size : 'lg',
-              className: cn(actionButton.props.className, 'w-full sm:w-auto'),
-            })}
-          {secondButton &&
-            React.cloneElement(secondButton, {
-              variant: 'outline',
-              size: secondButton.props.size ? secondButton.props.size : 'lg',
-              className: cn(secondButton.props.className, 'w-full sm:w-auto'),
-            })}
-        </div>
-      </div>
-      <div className="relative max-md:-m-4 lg:w-full">
-        <img
-          alt="Example"
-          width="1080"
-          height="1080"
-          decoding="async"
-          data-nimg="1"
-          className="ml-auto w-full max-w-xl rounded-md"
-          src={featuredImage}
-        />
-      </div>
-    </section>
-  ),
-)
-
-Hero.displayName = 'Hero'
-
-export default Hero

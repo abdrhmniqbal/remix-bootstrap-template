@@ -2,7 +2,7 @@ import { Link } from '@remix-run/react'
 import React from 'react'
 import { Button, ButtonProps } from '@/components/ui/button'
 
-interface LinkButtonProps extends ButtonProps {
+export interface LinkButtonProps extends ButtonProps {
   to: string
   target?: React.HTMLAttributeAnchorTarget
 }
