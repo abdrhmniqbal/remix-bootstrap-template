@@ -11,7 +11,7 @@ import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
 import LogoList from '@/components/blocks/logo-list'
 import Pricing from '@/components/blocks/pricing'
-import Problem from '@/components/blocks/problem'
+import Problems from '@/components/blocks/problems'
 import Testimonial from '@/components/blocks/testimonial'
 import { getEnvValue } from '@/lib/utils'
 
@@ -31,25 +31,7 @@ export default function Index() {
       <Header />
       <Hero />
       <LogoList />
-
-      <Problem
-        title={`80% of startups never launched`}
-        description="Auth, payment, design... there is too much to do."
-        problems={[
-          {
-            icon: '💻',
-            title: 'Start creating a project',
-          },
-          {
-            icon: '⏱️',
-            title: 'Not have time enough',
-          },
-          {
-            icon: '🚪',
-            title: 'Leave the project',
-          },
-        ]}
-      />
+      <Problems />
 
       <Features
         title="Fast your developments"
