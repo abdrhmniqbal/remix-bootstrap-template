@@ -29,26 +29,7 @@ export default function Index() {
       <Features />
       <Reviews />
       <Pricing />
-
-      <FAQ
-        questions={[
-          {
-            question: 'Why you should use Landfast?',
-            answer:
-              'With Landfast you can make website faster with prebuilt boilerplate. You just only need to use command to add boilerplate that you need.',
-          },
-          {
-            question: 'Is it free?',
-            answer:
-              'The basic template is free. For more advance use we recommend to buy pro plans.',
-          },
-          {
-            question: 'Are we get updates?',
-            answer:
-              'Yes. We eventually doing updates. Check our changelogs to see our latest update.',
-          },
-        ]}
-      />
+      <FAQ />
     </>
   )
 }
