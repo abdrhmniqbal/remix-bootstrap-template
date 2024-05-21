@@ -1,70 +1,53 @@
-import React from 'react'
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { cn } from '@/lib/utils'
+  CreditCardIcon,
+  DatabaseIcon,
+  HomeIcon,
+  SquareChevronRightIcon,
+} from 'lucide-react'
+import {
+  FeatureContent,
+  FeatureDescription,
+  FeatureHeader,
+  FeatureItem,
+  FeatureTitle,
+  FeatureWrapper,
+} from '@/components/ui/features'
 
-type Feature = {
-  icon: JSX.Element
-  title: string
-  description: string
-}
-
-interface FeaturesProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string
-  description?: string
-  features: Feature[]
-}
-
-const Features = React.forwardRef<HTMLDivElement, FeaturesProps>(
-  ({ title, description, features, className, ...props }, ref) => (
-    <section
-      id="features"
-      className={cn('mx-auto max-w-7xl px-8 py-16', className)}
-      ref={ref}
-      {...props}
-    >
-      <div className="relative mx-auto max-w-2xl text-center">
-        <div className="relative z-10">
-          <h2 className="mt-2 text-4xl font-bold sm:text-5xl">{title}</h2>
-          <p className="mt-6 text-lg text-muted-foreground">{description}</p>
-        </div>
-      </div>
-      <div className="relative mt-12">
-        <div
-          className={cn(
-            'grid gap-8 sm:grid-cols-2 lg:grid-cols-2',
-            features.length % 2 !== 0 && 'lg:grid-cols-3',
-          )}
+export default function Features() {
+  return (
+    <FeatureWrapper>
+      <FeatureHeader>
+        <FeatureTitle>Fast your developments</FeatureTitle>
+        <FeatureDescription>
+          Use our boilerplate to make development more fast, fast, and faster.
+        </FeatureDescription>
+      </FeatureHeader>
+      <FeatureContent>
+        <FeatureItem
+          title="CLI Tools"
+          description="Easy to use boilerplate just run command and the boilerplate ready to use. No need to copy. No need to paste."
         >
-          {features.map(({ title, description, icon }, idx) => (
-            <Card
-              key={idx}
-              className="space-y-3 rounded-lg border hover:border-primary"
-            >
-              <CardHeader className="px-6 pb-2 pt-4">
-                <div className="mt-4 inline-flex h-10 w-10 items-center justify-center whitespace-nowrap rounded-md bg-secondary text-sm font-medium text-secondary-foreground hover:bg-secondary/80">
-                  {icon}
-                </div>
-              </CardHeader>
-              <CardContent>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription className="mt-2">
-                  {description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  ),
-)
-
-Features.displayName = 'Features'
-
-export default Features
+          <SquareChevronRightIcon />
+        </FeatureItem>
+        <FeatureItem
+          title="Database"
+          description="Easy to integrate with any database, didn't care that is SQL or noSQL."
+        >
+          <DatabaseIcon />
+        </FeatureItem>
+        <FeatureItem
+          title="Payment"
+          description="This stacks has built-in payment integration with Stripe in base template."
+        >
+          <CreditCardIcon />
+        </FeatureItem>
+        <FeatureItem
+          title="Host anywhere"
+          description="This stacks can be hosted anywhere. Check docs for advanced configuration."
+        >
+          <HomeIcon />
+        </FeatureItem>
+      </FeatureContent>
+    </FeatureWrapper>
+  )
+}
