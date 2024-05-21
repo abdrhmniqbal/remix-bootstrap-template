@@ -1,20 +1,40 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { cn } from '@/lib/utils'
 
-interface TestimonialProps extends React.HTMLAttributes<HTMLDivElement> {
+export function ReviewWrapper({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <section
+      id="hero"
+      className={cn(
+        'mx-auto flex flex-col flex-wrap items-center justify-center gap-x-16 gap-y-24 px-8 py-16 md:flex-row md:py-24 lg:gap-x-32',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </section>
+  )
+}
+
+interface ReviewProps extends React.HTMLAttributes<HTMLDivElement> {
   message: string
-  name: string
-  userRole: string
+  reviewer: string
+  reviewerRole: string
   src?: string
 }
 
-export default function Testimonial({
+export default function Review({
   message,
-  name,
-  userRole,
+  reviewer,
+  reviewerRole,
   src,
-}: TestimonialProps) {
+}: ReviewProps) {
   return (
-    <div className="mx-auto my-16 max-w-md space-y-4 md:my-24">
+    <div className="max-w-sm space-y-4 lg:max-w-md">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="w-8 fill-primary"
@@ -27,11 +47,11 @@ export default function Testimonial({
       <div className="flex items-center gap-4">
         <Avatar>
           <AvatarImage src={src} />
-          <AvatarFallback>{name[0]}</AvatarFallback>
+          <AvatarFallback>{reviewer[0]}</AvatarFallback>
         </Avatar>
         <div className="flex flex-col">
-          <p>{name}</p>
-          <p className="text-sm text-muted-foreground">{userRole}</p>
+          <p>{reviewer}</p>
+          <p className="text-sm text-muted-foreground">{reviewerRole}</p>
         </div>
       </div>
     </div>

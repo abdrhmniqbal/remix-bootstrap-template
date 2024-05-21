@@ -6,7 +6,7 @@ import Hero from '@/components/blocks/hero'
 import LogoList from '@/components/blocks/logo-list'
 import Pricing from '@/components/blocks/pricing'
 import Problems from '@/components/blocks/problems'
-import Testimonial from '@/components/blocks/testimonial'
+import Reviews from '@/components/blocks/reviews'
 import { getEnvValue } from '@/lib/utils'
 
 export const meta: MetaFunction = () => {
@@ -27,13 +27,7 @@ export default function Index() {
       <LogoList />
       <Problems />
       <Features />
-
-      <Testimonial
-        message="I don't believe just launched project in one day. This so fast and easy."
-        name="Iqbal Abdurrahman"
-        userRole="Software Engineer"
-        src="https://github.com/iblabd.png"
-      />
+      <Reviews />
 
       <Pricing
         description="Choose the plan that fits your needs. All plans come with a 30-day
