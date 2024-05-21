@@ -1,10 +1,3 @@
-import {
-  PrismaIcon,
-  RemixIcon,
-  ShadcnIcon,
-  StripeIcon,
-  ViteIcon,
-} from '@/assets/icons'
 import type { MetaFunction } from '@remix-run/node'
 import {
   CreditCardIcon,
@@ -14,7 +7,6 @@ import {
 } from 'lucide-react'
 import FAQ from '@/components/blocks/faq'
 import Features from '@/components/blocks/features'
-import Footer from '@/components/blocks/footer'
 import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
 import LogoList from '@/components/blocks/logo-list'
@@ -38,37 +30,7 @@ export default function Index() {
     <>
       <Header />
       <Hero />
-
-      <LogoList
-        title="Built for Developers"
-        lists={[
-          {
-            to: 'https://remix.run',
-            target: '_blank',
-            logo: <RemixIcon />,
-          },
-          {
-            to: 'https://vitejs.dev',
-            target: '_blank',
-            logo: <ViteIcon />,
-          },
-          {
-            to: 'https://stripe.com',
-            target: '_blank',
-            logo: <StripeIcon />,
-          },
-          {
-            to: 'https://www.prisma.io',
-            target: '_blank',
-            logo: <PrismaIcon />,
-          },
-          {
-            to: 'https://ui.shadcn.com',
-            target: '_blank',
-            logo: <ShadcnIcon />,
-          },
-        ]}
-      />
+      <LogoList />
 
       <Problem
         title={`80% of startups never launched`}
@@ -169,8 +131,6 @@ export default function Index() {
           },
         ]}
       />
-
-      <Footer />
     </>
   )
 }
