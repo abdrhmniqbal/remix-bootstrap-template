@@ -28,29 +28,7 @@ export default function Index() {
       <Problems />
       <Features />
       <Reviews />
-
-      <Pricing
-        description="Choose the plan that fits your needs. All plans come with a 30-day
-          money-back guarantee."
-        tiers={[
-          {
-            cta: 'Subscribe now',
-            description: 'For hobbyists and beginners who want to learn.',
-            features: ['Unlimited public projects', 'Community support'],
-            name: 'Starter',
-            price: 'Free',
-          },
-          {
-            cta: 'Subscribe now',
-            description: 'For professionals and businesses who want to grow.',
-            features: ['Access to boilerplate CLI', 'Priority support'],
-            highlighted: true,
-            name: 'Pro',
-            price: '$49.99',
-            priceSuffix: 'per year',
-          },
-        ]}
-      />
+      <Pricing />
 
       <FAQ
         questions={[
