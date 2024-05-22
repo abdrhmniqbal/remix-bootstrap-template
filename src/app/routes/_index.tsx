@@ -1,6 +1,7 @@
 import type { MetaFunction } from '@remix-run/node'
 import FAQ from '@/components/blocks/faq'
 import Features from '@/components/blocks/features'
+import Footer from '@/components/blocks/footer'
 import Header from '@/components/blocks/header'
 import Hero from '@/components/blocks/hero'
 import LogoList from '@/components/blocks/logo-list'
@@ -30,6 +31,7 @@ export default function Index() {
       <Reviews />
       <Pricing />
       <FAQ />
+      <Footer />
     </>
   )
 }
