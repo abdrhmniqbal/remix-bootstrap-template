@@ -21,6 +21,21 @@ export function ProblemWrapper({
   )
 }
 
+export function ProblemHeader({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn('mx-auto mb-16 max-w-3xl text-center', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
+
 export function ProblemTitle({
   children,
   className,
@@ -78,10 +93,10 @@ export function ProblemContent({
 interface ProblemProps {
   children: JSX.Element | string
   lastItem?: boolean
-  title: string
+  description: string
 }
 
-export function Problem({ title, children, lastItem }: ProblemProps) {
+export function Problem({ description, children, lastItem }: ProblemProps) {
   return (
     <>
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 md:w-48">
@@ -92,7 +107,7 @@ export function Problem({ title, children, lastItem }: ProblemProps) {
                 className: cn(children.props.className, 'size-10'),
               })}
         </span>
-        <p className="font-bold">{title}</p>
+        <p className="font-bold">{description}</p>
       </div>
       {!lastItem && (
         <div className="flex h-full w-full items-center justify-center md:w-auto">

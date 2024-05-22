@@ -2,6 +2,7 @@ import {
   Problem,
   ProblemContent,
   ProblemDescription,
+  ProblemHeader,
   ProblemTitle,
   ProblemWrapper,
 } from '@/components/ui/problems'
@@ -9,15 +10,17 @@ import {
 export default function Problems() {
   return (
     <ProblemWrapper>
-      <ProblemTitle>80% of startups never launched</ProblemTitle>
-      <ProblemDescription>
-        Auth, payment, design... there is too much to do.
-      </ProblemDescription>
+      <ProblemHeader>
+        <ProblemTitle>80% of startups never launched</ProblemTitle>
+        <ProblemDescription>
+          Auth, payment, design... there is too much to do.
+        </ProblemDescription>
+      </ProblemHeader>
       <ProblemContent>
-        <Problem title="Start creating a project">💻</Problem>
-        <Problem title="Not have time enough">⏱️</Problem>
+        <Problem description="Start creating a project">💻</Problem>
+        <Problem description="Not have time enough">⏱️</Problem>
         <Problem
-          title="Leave the project"
+          description="Leave the project"
           lastItem
         >
           🚪
