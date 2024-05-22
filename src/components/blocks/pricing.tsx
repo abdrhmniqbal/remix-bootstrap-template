@@ -4,12 +4,6 @@ import {
   PricingDescription,
   PricingHeader,
   PricingTier,
-  PricingTierContent,
-  PricingTierDescription,
-  PricingTierFeatures,
-  PricingTierHeader,
-  PricingTierPrice,
-  PricingTierTitle,
   PricingTitle,
   PricingWrapper,
 } from '@/components/ui/pricing'
@@ -25,39 +19,29 @@ export default function Pricing() {
         </PricingDescription>
       </PricingHeader>
       <PricingContent>
-        <PricingTier>
-          <PricingTierHeader>
-            <PricingTierTitle>Starter</PricingTierTitle>
-            <PricingTierDescription>
-              For hobbyists and beginners who want to learn.
-            </PricingTierDescription>
-          </PricingTierHeader>
-          <PricingTierContent>
-            <PricingTierPrice>Free</PricingTierPrice>
-            <PricingActionButton to="/get/starter">
-              Subscribe Now
-            </PricingActionButton>
-            <PricingTierFeatures
-              features={['Unlimited public projects', 'Community support']}
-            />
-          </PricingTierContent>
+        <PricingTier
+          title="Starter"
+          description="For hobbyists and beginners who want to learn."
+          price="Free"
+          features={['Unlimited public projects', 'Community support']}
+        >
+          <PricingActionButton to="/get/starter">
+            Subscribe Now
+          </PricingActionButton>
         </PricingTier>
-        <PricingTier highlighted>
-          <PricingTierHeader>
-            <PricingTierTitle highlighted>Pro</PricingTierTitle>
-            <PricingTierDescription>
-              For professionals and businesses who want to grow.
-            </PricingTierDescription>
-          </PricingTierHeader>
-          <PricingTierContent>
-            <PricingTierPrice priceSuffix="per month">$49.99</PricingTierPrice>
-            <PricingActionButton to="/get/pro">
-              Subscribe Now
-            </PricingActionButton>
-            <PricingTierFeatures
-              features={['Access to boilerplate CLI', 'Priority support']}
-            />
-          </PricingTierContent>
+        <PricingTier
+          title="Pro"
+          description="For professionals and businesses who want to grow."
+          price="$49.99"
+          priceSuffix="per month"
+          features={[
+            'All starter features',
+            'Access to boilerplate CLI',
+            'Priority support',
+          ]}
+          highlighted
+        >
+          <PricingActionButton to="/get/pro">Subscribe Now</PricingActionButton>
         </PricingTier>
       </PricingContent>
     </PricingWrapper>

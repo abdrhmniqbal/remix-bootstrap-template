@@ -92,13 +92,25 @@ export function PricingContent({
 }
 
 interface PricingTierProps extends React.HTMLAttributes<HTMLLIElement> {
+  title: string
+  description: string
+  features: string[]
+  price: string
+  priceSuffix?: string
   highlighted?: boolean
+  highlightedText?: string
 }
 
 export function PricingTier({
   children,
   className,
+  description,
+  features,
   highlighted,
+  highlightedText,
+  price,
+  priceSuffix,
+  title,
   ...props
 }: PricingTierProps) {
   return (
@@ -112,95 +124,47 @@ export function PricingTier({
           highlighted && 'ring-2 ring-primary dark:bg-border/50',
         )}
       >
-        {children}
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold">{title}</h2>
+            {highlighted && (
+              <Badge
+                className="rounded-full border-primary bg-primary/10 text-primary dark:border-transparent dark:bg-primary dark:text-primary-foreground"
+                variant="outline"
+              >
+                {highlightedText ? highlightedText : 'Most popular'}
+              </Badge>
+            )}
+          </div>
+          <CardDescription>{description}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <p className="flex items-baseline gap-x-1">
+            <span className="text-4xl font-bold tracking-tight">{price}</span>
+            {priceSuffix && (
+              <span className="text-sm font-semibold text-muted-foreground">
+                {priceSuffix}
+              </span>
+            )}
+          </p>
+          {children}
+          <ul className="space-y-3">
+            {features.map(feature => (
+              <li
+                key={feature}
+                className="flex items-center gap-x-3 text-sm text-muted-foreground"
+              >
+                <CheckIcon
+                  aria-hidden="true"
+                  className="size-5 flex-none text-primary dark:text-foreground"
+                />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
       </Card>
     </li>
-  )
-}
-
-export function PricingTierHeader({
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return <CardHeader {...props}>{children}</CardHeader>
-}
-
-interface PricingTierTitleProps extends React.HTMLAttributes<HTMLDivElement> {
-  highlighted?: boolean
-  highlightedText?: string
-}
-
-export function PricingTierTitle({
-  children,
-  className,
-  highlighted,
-  highlightedText,
-  ...props
-}: PricingTierTitleProps) {
-  return (
-    <div
-      className={'flex items-center justify-between'}
-      {...props}
-    >
-      <h2 className={cn('text-lg font-semibold', className)}>{children}</h2>
-      {highlighted && (
-        <Badge
-          className="rounded-full border-primary bg-primary/10 text-primary dark:border-transparent dark:bg-primary dark:text-primary-foreground"
-          variant="outline"
-        >
-          {highlightedText ? highlightedText : 'Most popular'}
-        </Badge>
-      )}
-    </div>
-  )
-}
-
-export function PricingTierDescription({
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
-  return <CardDescription {...props}>{children}</CardDescription>
-}
-
-export function PricingTierContent({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
-  return (
-    <CardContent
-      className={cn('space-y-6', className)}
-      {...props}
-    >
-      {children}
-    </CardContent>
-  )
-}
-
-interface PricingTierPriceProps extends React.HTMLAttributes<HTMLSpanElement> {
-  priceSuffix?: string
-}
-
-export function PricingTierPrice({
-  children,
-  className,
-  priceSuffix,
-  ...props
-}: PricingTierPriceProps) {
-  return (
-    <p className="flex items-baseline gap-x-1">
-      <span
-        className={cn('text-4xl font-bold tracking-tight', className)}
-        {...props}
-      >
-        {children}
-      </span>
-      {priceSuffix && (
-        <span className="text-sm font-semibold text-muted-foreground">
-          {priceSuffix}
-        </span>
-      )}
-    </p>
   )
 }
 
@@ -216,36 +180,5 @@ export function PricingActionButton({
     >
       {children}
     </LinkButton>
-  )
-}
-
-interface PricingTierFeaturesProps
-  extends React.HTMLAttributes<HTMLUListElement> {
-  features: string[]
-}
-
-export function PricingTierFeatures({
-  className,
-  features,
-  ...props
-}: PricingTierFeaturesProps) {
-  return (
-    <ul
-      className={cn(`space-y-3`, className)}
-      {...props}
-    >
-      {features.map(feature => (
-        <li
-          key={feature}
-          className="flex items-center gap-x-3 text-sm text-muted-foreground"
-        >
-          <CheckIcon
-            aria-hidden="true"
-            className="size-5 flex-none text-primary dark:text-foreground"
-          />
-          {feature}
-        </li>
-      ))}
-    </ul>
   )
 }
