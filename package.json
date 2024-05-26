@@ -26,6 +26,7 @@
     "clsx": "^2.1.1",
     "compression": "^1.7.4",
     "express": "^4.19.2",
+    "helmet": "^7.1.0",
     "isbot": "^4.1.0",
     "lucide-react": "^0.376.0",
     "morgan": "^1.10.0",

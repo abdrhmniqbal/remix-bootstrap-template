@@ -3,6 +3,7 @@ import { installGlobals } from '@remix-run/node'
 import compression from 'compression'
 import crypto from 'crypto'
 import express from 'express'
+import helmet from 'helmet'
 import morgan from 'morgan'
 
 installGlobals()
@@ -39,6 +40,40 @@ app.use((_, res, next) => {
   res.locals.cspNonce = crypto.randomBytes(16).toString('hex')
   next()
 })
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      referrerPolicy: { policy: 'same-origin' },
+      crossOriginEmbedderPolicy: false,
+      // Important: Remove `reportOnly` to enforce CSP. (Development only).
+      reportOnly: NODE_ENV !== 'production',
+      directives: {
+        // Controls allowed endpoints for fetch, XHR, WebSockets, etc.
+        'connect-src': [
+          NODE_ENV === 'development' ? 'ws:' : null,
+          "'self'",
+        ].filter(Boolean),
+        // Defines which origins can serve fonts to your site.
+        'font-src': ["'self'"],
+        // Specifies origins allowed to be embedded as frames.
+        'frame-src': ["'self'"],
+        // Determines allowed sources for images.
+        'img-src': ["'self'", 'data:'],
+        // Sets restrictions on sources for <script> elements.
+        'script-src': [
+          "'strict-dynamic'",
+          "'self'",
+          (_, res) => `'nonce-${res.locals.cspNonce}'`,
+        ],
+        // Controls allowed sources for inline JavaScript event handlers.
+        'script-src-attr': [(_, res) => `'nonce-${res.locals.cspNonce}'`],
+        // Enforces that requests are made over HTTPS.
+        'upgrade-insecure-requests': null,
+      },
+    },
+  }),
+)
 
 /**
  * Clean route paths. (No ending slashes, Better SEO)
