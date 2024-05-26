@@ -20,6 +20,7 @@
     "@remix-run/express": "^2.9.2",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
+    "babel-plugin-react-compiler": "0.0.0-experimental-592953e-20240517",
     "@remix-run/serve": "^2.9.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -31,9 +32,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vite-plugin-babel": "^1.2.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.24.6",
     "@remix-run/dev": "^2.9.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/compression": "^1.7.5",
