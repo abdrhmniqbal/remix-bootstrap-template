@@ -40,6 +40,19 @@ app.use((_, res, next) => {
   next()
 })
 
+/**
+ * Clean route paths. (No ending slashes, Better SEO)
+ */
+app.use((req, res, next) => {
+  if (req.path.endsWith('/') && req.path.length > 1) {
+    const query = req.url.slice(req.path.length)
+    const safePath = req.path.slice(0, -1).replace(/\/+/g, '/')
+    res.redirect(301, safePath + query)
+  } else {
+    next()
+  }
+})
+
 // Handle assets requests.
 if (viteDevServer) {
   app.use(viteDevServer.middlewares)
